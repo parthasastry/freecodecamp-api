@@ -1,14 +1,14 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "description": "",
+  "private": true,
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
   "engines": {
-    "node": "v4.6.1",
-    "npm" : "2.15.9"
+    "node": "~4.6.1",
+    "npm" : "~2.15.9"
   },
   "author": "",
   "license": "ISC",
