@@ -21,10 +21,6 @@ app.get('/:time', function(req, res){
   res.send(x);
 });
 
-// app.listen(8080, function () {
-//   console.log('Example app listening on port 8080!');
-// });
-
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Microservice API for Unix Time has started!");
 });
@@ -44,6 +40,21 @@ function checkInputDate(str){
 }
 
 function convertUnixToNatural(timeInMs){
+    var timeInMsArray = timeInMs.split('');
+    var diff = 13 - timeInMsArray.length;
+    if (diff > 0){
+        for (var i = 0; i < diff; i++){
+            timeInMsArray.push('0');
+        }
+    }
+    console.log(timeInMsArray);
+    timeInMs = timeInMsArray.join('');
+    timeInMs = String(timeInMs);
+    console.log('timeInMs = ', timeInMs);
+    if(timeInMs.length < 13){
+      timeInMs = timeInMs.padEnd(13, '0');
+    }
+    console.log('timeInMs = ', timeInMs);
     timeInMs = parseFloat(timeInMs);
     var d = new Date(timeInMs);
     var year = d.getFullYear();
