@@ -25,8 +25,8 @@ app.get('/:time', function(req, res){
 //   console.log('Example app listening on port 8080!');
 // });
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+app.listen(process.env.PORT, process.env.IP, function(){
+    console.log("Microservice API for Unix Time has started!");
 });
 
 function checkInputDate(str){
