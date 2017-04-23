@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var http = require('http');
 var bodyParser = require('body-parser');
 var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -20,8 +21,12 @@ app.get('/:time', function(req, res){
   res.send(x);
 });
 
-app.listen(8080, function () {
-  console.log('Example app listening on port 8080!');
+// app.listen(8080, function () {
+//   console.log('Example app listening on port 8080!');
+// });
+
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
 });
 
 function checkInputDate(str){
